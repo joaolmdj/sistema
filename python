@@ -1,0 +1,4 @@
+Collecting mysqlclient
+  Using cached mysqlclient-2.0.3-cp39-cp39-win_amd64.whl (179 kB)
+Installing collected packages: mysqlclient
+Successfully installed mysqlclient-2.0.3

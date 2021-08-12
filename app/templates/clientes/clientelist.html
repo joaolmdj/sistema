@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página incial</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+</head>
+<body>
+<div class="container">
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-xs-5">
+                    <h2>Lista de <b>Clientes</b></h2>
+                </div>
+                <div class="col-xs-7">
+                    <a href="clienteadd/" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Adicionar um novo cliente</span></a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <ul class="cliente-list">
+                    {% for Clientes in ClienteList %}
+                        <tr>
+                            <td><a href="/cliente/{{Clientes.id_cliente}}">{{Clientes.id_cliente}}</a></td>
+                            <td><a href="/cliente/{{Clientes.id_cliente}}">{{Clientes.nome_cliente}}</a></td>
+                            <td><a href="/cliente/{{Clientes.id_cliente}}">{{Clientes.email}}</a></td>
+                            <td><a href="/cliente/{{Clientes.id_cliente}}">{{Clientes.telefone}}</a></td>
+                            <td><span class="status text-success">&bull;</span> Ativo</td>
+                            <td>
+                                <a href="clienteedit/{{Clientes.id_cliente}}" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                                <a href="clientedelete/{{Clientes.id_cliente}}" class="delete" title="Deletar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </ul>
+            </tbody>
+        </table>
+        <div class="clearfix"></div>
+            {% if ClienteList.has_other_pages %}
+                <ul class="pagination">
+                {% if ClienteList.has_previous %}
+                    <li><a href="?page={{ ClienteList.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in ClienteList.paginator.page_range %}
+                    {% if ClienteList.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if ClienteList.has_next %}
+                    <li><a href="?page={{ ClienteList.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

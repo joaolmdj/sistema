@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lista de Pedidos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/stylepedido.css' %}">
+<script>
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+</head>
+<body>
+    <div class="container">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <h2>Lista de <b>Pedidos</b></h2>
+                    </div>
+                    <div class="col-xs-7">
+                        <a href="pedidosadd/" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Adicionar um novo produto</span></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        <th>Quantidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <ul class="pedidos-list">
+                        {% for Pedidos in PedidosList %}
+                            <tr>
+                                <td><a href="">{{Pedidos.id_produto}}</a></td>
+                                <td><a href="">{{Pedidos.nome_produto}}</a></td>
+                                <td><a href="">{{Pedidos.valor_produto}}</a></td>
+                                <td><a href="">{{Pedidos.quantidade_produto}}</a></td>
+                                <td>
+                                    <a href="pedidosedit/{{Pedidos.id_produto}}" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                                    <a href="pedidosdelete/{{Pedidos.id_produto}}" class="delete" title="Deletar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </ul>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </body>
+    </html>
