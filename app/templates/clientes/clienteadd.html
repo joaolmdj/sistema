@@ -32,64 +32,70 @@ $(document).ready(function(){
                     </div>
                 </div>
                 {% block content %}
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="form-group col-md-6">
-                        <label for="nome_cliente">Nome</label>
-                        {% render_field form.nome_cliente class+="form-control" %}
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label for="cpf">CPF</label>
-                        {% render_field form.cpf class+="form-control" %}
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label for="rg">RG</label>
-                        {% render_field form.rg class+="form-control" %} 
-                    </div>
-                    <div class="form-group col-md-8">
-                        <label for="email">E-mail</label>
-                        {% render_field form.email class+="form-control" %} 
-                    </div>
-                    <div class="form-group col-md-2">
-                    <label for="telefone">Telefone</label>
-                        {% render_field form.telefone class+="form-control" %} 
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="celular">Celular</label>
-                        {% render_field form.celular class+="form-control" %} 
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group col-md-6">
+                            <label for="nome_cliente">Nome</label>
+                            {% render_field form.nome_cliente class+="form-control" %}
                         </div>
-                    <div class="form-group col-md-7">
-                    <label for="endereco">Endereço</label>
-                        {% render_field form.endereco class+="form-control" %} 
-                    </div>
-                    <div class="form-group col-md-5">
-                        <label for="complemento">Complemento</label>
-                        {% render_field form.complemento class+="form-control" %} 
+
+                        <div class="form-group col-md-3">
+                            <label for="cpf">CPF</label>
+                            {% render_field form.cpf class+="form-control" %}
                         </div>
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="cidade">Cidade</label>
-                        {% render_field form.cidade class+="form-control" %} 
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputState">Estado</label>
-                        {% render_field form.estado class+="form-control" %} 
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="cep">CEP</label>
-                        {% render_field form.cep class+="form-control" %} 
-                    </div>
-                    <div class=text-right>
-                        <input type="submit" class="btn btn-primary" value="Cadastrar">
-                    </div>
-                </form>
+
+                        <div class="form-group col-md-3">
+                            <label for="rg">RG</label>
+                            {% render_field form.rg class+="form-control" %} 
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="email">E-mail</label>
+                            {% render_field form.email class+="form-control" %} 
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="telefone">Telefone</label>
+                            {% render_field form.telefone class+="form-control" %} 
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="celular">Celular</label>
+                            {% render_field form.celular class+="form-control" %} 
+                        </div>
+
+                        <div class="form-group col-md-7">
+                            <label for="endereco">Endereço</label>
+                            {% render_field form.endereco class+="form-control" %} 
+                        </div>
+                        
+                        <div class="form-group col-md-5">
+                            <label for="complemento">Complemento</label>
+                            {% render_field form.complemento class+="form-control" %} 
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="cidade">Cidade</label>
+                            {% render_field form.cidade class+="form-control" %} 
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="estado">Estado</label>
+                            {% render_field form.estado class+="form-control" %} 
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="cep">CEP</label>
+                            {% render_field form.cep class+="form-control" %} 
+                        </div>
+
+                        <div class=text-right>
+                            <input type="submit" class="btn btn-primary" value="Cadastrar">
+                        </div>
+                    </form>
                 {% endblock %}
             </div>  
         </div>
-    </div>
-</div>
-                
+    </div>        
 </body>
 </html>

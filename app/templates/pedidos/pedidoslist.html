@@ -55,10 +55,10 @@ $(document).ready(function(){
                     <ul class="pedidos-list">
                         {% for Pedidos in PedidosList %}
                             <tr>
-                                <td><a href="">{{Pedidos.id_produto}}</a></td>
-                                <td><a href="">{{Pedidos.nome_produto}}</a></td>
-                                <td><a href="">{{Pedidos.valor_produto}}</a></td>
-                                <td><a href="">{{Pedidos.quantidade_produto}}</a></td>
+                                <td><a>{{Pedidos.id_produto}}</a></td>
+                                <td><a>{{Pedidos.nome_produto}}</a></td>
+                                <td><a>{{Pedidos.valor_produto}}</a></td>
+                                <td><a>{{Pedidos.quantidade_produto}}</a></td>
                                 <td>
                                     <a href="pedidosedit/{{Pedidos.id_produto}}" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                                     <a href="pedidosdelete/{{Pedidos.id_produto}}" class="delete" title="Deletar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>

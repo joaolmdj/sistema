@@ -2,7 +2,7 @@ from django.core import paginator
 from django.http import request
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Clientes, Pedidos
-from .forms import ClientesForm
+from .forms import ClientesForm, PedidosForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 
@@ -15,7 +15,7 @@ def home(request):
 
 
 def ClienteList(request):
-    ClienteList = Clientes.objects.all()
+    ClienteList = Clientes.objects.all().order_by('-id_cliente')
 
     paginator = Paginator(ClienteList, 5)
 
@@ -28,7 +28,7 @@ def ClienteList(request):
 
 def PedidosList(request, id):
     PedidosList = get_object_or_404(Clientes, pk=id)
-    PedidosList = Pedidos.objects.all()
+    PedidosList = Pedidos.objects.filter(id_cli = id)
 
     return render(request, 'pedidos/pedidoslist.html', {'PedidosList': PedidosList})
 
@@ -46,9 +46,10 @@ def ClienteAdd(request):
     return render(request, 'clientes/clienteadd.html', context)
 
 
-def PedidosAdd(request):
-    form = ClientesForm(request.POST or None)
+def PedidosAdd(request, id):
+    form = PedidosForm(request.POST or None)
     if form.is_valid():
+        
         form.save()
         return redirect('/')
 
@@ -56,7 +57,7 @@ def PedidosAdd(request):
         'form' : form
     }
 
-    return render(request, 'cliente/pedidosadd.html', context)
+    return render(request, 'pedidos/pedidosadd.html', context)
 
 
 def ClienteEdit(request, id):

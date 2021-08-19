@@ -26,7 +26,7 @@ class Clientes(models.Model):
     class Meta:
         managed = False
         db_table = 'clientes'
-
+        
 
 class Pedidos(models.Model):
     id_cli = models.IntegerField(primary_key=True)
@@ -39,7 +39,6 @@ class Pedidos(models.Model):
     class Meta:
         managed = False
         db_table = 'pedidos'
-        unique_together = (('id_cli', 'id_produto'),)
 
 
 class Produtos(models.Model):

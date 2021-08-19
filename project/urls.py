@@ -19,10 +19,10 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.ClienteList, name='cliente-list'),
-    path('cliente/<int:id>', views.PedidosList, name="pedidos-list"),
+    path('', views.ClienteList, name='ClienteList'),
+    path('cliente/<int:id>/', views.PedidosList, name="PedidosList"),
     path('clienteadd/', views.ClienteAdd, name="ClientesAdd"),
     path('clienteedit/<int:id>', views.ClienteEdit, name="ClienteEdit"),
     path('clientedelete/<int:id>', views.ClienteDelete, name="ClienteDelete"),
-    path('pedidosadd/', views.PedidosAdd, name="PedidosAdd"),
+    path('cliente/<int:id>/pedidosadd/', views.PedidosAdd, name="PedidosAdd"),
 ]
